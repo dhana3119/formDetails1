@@ -5,147 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information Collection Form</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .form-container {
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 520px;
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #2c3e50;
-        }
-        .form-group {
-            margin-bottom: 16px;
-        }
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: #444;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #cbd5e0;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: border 0.2s, box-shadow 0.2s;
-        }
-        input:focus, select:focus {
-            outline: none;
-            border-color: #3182ce;
-            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #3182ce;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background-color: #2b6cb0;
-        }
-        .required::after {
-            content: " *";
-            color: #e53e3e;
-        }
-        small {
-            display: block;
-            color: #718096;
-            font-size: 12px;
-            margin-top: 4px;
-        }
+        /* [Keep the exact same CSS from the previous version] */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .form-container { background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 520px; }
+        h2 { text-align: center; margin-bottom: 25px; color: #2c3e50; }
+        .form-group { margin-bottom: 16px; }
+        label { display: block; margin-bottom: 6px; font-weight: 600; color: #444; }
+        input, select { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 14px; transition: border 0.2s, box-shadow 0.2s; }
+        input:focus, select:focus { outline: none; border-color: #3182ce; box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2); }
+        button { width: 100%; padding: 12px; background-color: #3182ce; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: background 0.3s; }
+        button:hover { background-color: #2b6cb0; }
+        button:disabled { background-color: #a0aec0; cursor: not-allowed; }
+        .required::after { content: " *"; color: #e53e3e; }
+        small { display: block; color: #718096; font-size: 12px; margin-top: 4px; }
+        #status { margin-top: 15px; text-align: center; font-weight: 500; min-height: 20px; }
     </style>
 </head>
 <body>
     <div class="form-container">
         <h2>Information Form</h2>
-        <!-- enctype is mandatory for file uploads -->
-        <form action="/your-backend-endpoint" method="POST" enctype="multipart/form-data">
-            
+        <form id="infoForm">
             <div class="form-group">
                 <label for="name" class="required">Full Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter full name" required>
             </div>
-
             <div class="form-group">
                 <label for="dept_number" class="required">Department Number</label>
                 <input type="number" id="dept_number" name="dept_number" placeholder="e.g., 101" required>
             </div>
-
             <div class="form-group">
                 <label for="income" class="required">Parents Annual Income</label>
                 <input type="number" id="income" name="income" min="0" step="1000" placeholder="e.g., 500000" required>
                 <small>Enter in your local currency unit</small>
             </div>
-
             <div class="form-group">
                 <label for="percentage" class="required">Percentage of Marks (%)</label>
                 <input type="number" id="percentage" name="percentage" min="0" max="100" step="0.01" placeholder="e.g., 85.5" required>
             </div>
-
             <div class="form-group">
                 <label for="religion" class="required">Religion</label>
                 <select id="religion" name="religion" required>
                     <option value="">Select Religion</option>
-                    <option value="hindu">Hindu</option>
-                    <option value="muslim">Muslim</option>
-                    <option value="christian">Christian</option>
-                    <option value="sikh">Sikh</option>
-                    <option value="buddhist">Buddhist</option>
-                    <option value="jain">Jain</option>
-                    <option value="other">Other</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Muslim">Muslim</option>
+                    <option value="Christian">Christian</option>
+                    <option value="Sikh">Sikh</option>
+                    <option value="Buddhist">Buddhist</option>
+                    <option value="Jain">Jain</option>
+                    <option value="Other">Other</option>
                 </select>
             </div>
-
             <div class="form-group">
                 <label for="community" class="required">Community</label>
-                <input type="text" id="community" name="community" placeholder="e.g., General, OBC, SC, ST, etc." required>
+                <input type="text" id="community" name="community" placeholder="e.g., General, OBC, SC, ST" required>
             </div>
-
             <div class="form-group">
                 <label for="contact" class="required">Contact Number</label>
                 <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="10-digit mobile number" required>
             </div>
-
             <div class="form-group">
                 <label for="email" class="required">Email ID</label>
                 <input type="email" id="email" name="email" placeholder="example@email.com" required>
             </div>
-
             <div class="form-group">
                 <label for="photo" class="required">Upload Photo</label>
                 <input type="file" id="photo" name="photo" accept="image/jpeg, image/png" required>
-                <small>Accepted formats: JPEG, PNG. Max size recommended: 2MB</small>
+                <small>Accepted formats: JPEG, PNG. Max size: 2MB</small>
             </div>
-
             <button type="submit">Submit Form</button>
         </form>
+        <div id="status"></div>
     </div>
+
+    <script>
+        // 🔑 REPLACE THIS WITH YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
+        document.getElementById('infoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const statusDiv = document.getElementById('status');
+            const submitBtn = form.querySelector('button');
+
+            statusDiv.textContent = 'Submitting...';
+            statusDiv.style.color = '#3182ce';
+            submitBtn.disabled = true;
+
+            const formData = new FormData();
+            const fileInput = document.getElementById('photo');
+            let filePromise = Promise.resolve();
+
+            // Append text/number fields
+            form.querySelectorAll('input, select').forEach(input => {
+                if (input.type !== 'file') {
+                    formData.append(input.name, input.value);
+                }
+            });
+
+            // Handle file upload asynchronously
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                formData.append('photoName', file.name);
+                formData.append('photoMimeType', file.type);
+
+                filePromise = new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                        formData.append('photo', e.target.result.split(',')[1]); // Strip data URI prefix
+                        resolve();
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            filePromise
+                .then(() => fetch(SCRIPT_URL, { method: 'POST', body: formData }))
+                .then(res => res.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        statusDiv.textContent = '✅ Submitted successfully!';
+                        statusDiv.style.color = '#2f855a';
+                        form.reset();
+                    } else {
+                        statusDiv.textContent = '❌ Error: ' + data.error;
+                        statusDiv.style.color = '#e53e3e';
+                    }
+                })
+                .catch(err => {
+                    statusDiv.textContent = '❌ Network error. Please try again.';
+                    statusDiv.style.color = '#e53e3e';
+                    console.error(err);
+                })
+                .finally(() => { submitBtn.disabled = false; });
+        });
+    </script>
 </body>
 </html>
