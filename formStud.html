@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Collection Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 520px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #444;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #2b6cb0;
+        }
+        .required::after {
+            content: " *";
+            color: #e53e3e;
+        }
+        small {
+            display: block;
+            color: #718096;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Information Form</h2>
+        <!-- enctype is mandatory for file uploads -->
+        <form action="/your-backend-endpoint" method="POST" enctype="multipart/form-data">
+            
+            <div class="form-group">
+                <label for="name" class="required">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dept_number" class="required">Department Number</label>
+                <input type="number" id="dept_number" name="dept_number" placeholder="e.g., 101" required>
+            </div>
+
+            <div class="form-group">
+                <label for="income" class="required">Parents Annual Income</label>
+                <input type="number" id="income" name="income" min="0" step="1000" placeholder="e.g., 500000" required>
+                <small>Enter in your local currency unit</small>
+            </div>
+
+            <div class="form-group">
+                <label for="percentage" class="required">Percentage of Marks (%)</label>
+                <input type="number" id="percentage" name="percentage" min="0" max="100" step="0.01" placeholder="e.g., 85.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="religion" class="required">Religion</label>
+                <select id="religion" name="religion" required>
+                    <option value="">Select Religion</option>
+                    <option value="hindu">Hindu</option>
+                    <option value="muslim">Muslim</option>
+                    <option value="christian">Christian</option>
+                    <option value="sikh">Sikh</option>
+                    <option value="buddhist">Buddhist</option>
+                    <option value="jain">Jain</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="community" class="required">Community</label>
+                <input type="text" id="community" name="community" placeholder="e.g., General, OBC, SC, ST, etc." required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact" class="required">Contact Number</label>
+                <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="10-digit mobile number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="required">Email ID</label>
+                <input type="email" id="email" name="email" placeholder="example@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="photo" class="required">Upload Photo</label>
+                <input type="file" id="photo" name="photo" accept="image/jpeg, image/png" required>
+                <small>Accepted formats: JPEG, PNG. Max size recommended: 2MB</small>
+            </div>
+
+            <button type="submit">Submit Form</button>
+        </form>
+    </div>
+</body>
+</html>
